@@ -5,18 +5,11 @@
 class Clnrm < Formula
   desc "Hermetic integration testing platform with container isolation"
   homepage "https://github.com/seanchatmangpt/clnrm"
-  url "https://github.com/seanchatmangpt/clnrm/archive/refs/tags/v0.3.0.tar.gz"
-  sha256 "a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456"
+  url "https://github.com/seanchatmangpt/clnrm/archive/refs/tags/v0.3.1.tar.gz"
+  sha256 "4f4e553060d9bf15ec3cca18a3cdfd65833836d3345c11c871c1687b03c7a6df"
   license "MIT"
   head "https://github.com/seanchatmangpt/clnrm.git", branch: "master"
 
-  bottle do
-    root_url "https://github.com/seanchatmangpt/clnrm/releases/download/v0.3.0"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma: "b1c2d3e4f5a6789012345678901234567890abcdef1234567890abcdef123456"
-    sha256 cellar: :any_skip_relocation, ventura: "c2d3e4f5a6b7890123456789012345678901234567890abcdef1234567890abcdef"
-    sha256 cellar: :any_skip_relocation, monterey: "d3e4f5a6b7c8901234567890123456789012345678901234567890abcdef123456"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "e4f5a6b7c8d9012345678901234567890123456789012345678901234567890abcdef"
-  end
 
   depends_on "rust" => :build
 
