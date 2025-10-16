@@ -5,8 +5,8 @@
 class Clnrm < Formula
   desc "Hermetic integration testing platform with container isolation"
   homepage "https://github.com/seanchatmangpt/clnrm"
-  url "https://github.com/seanchatmangpt/clnrm/archive/refs/tags/v0.3.3.tar.gz"
-  sha256 "a4efc8505e8792b92a9ae5917db89e1b7e64557660a6d5b2a49135311c46a969"
+  url "https://github.com/seanchatmangpt/clnrm/archive/refs/tags/v0.4.0.tar.gz"
+  sha256 "0677ed1c820997188b4012471e2d5ddbcbc9b86c63e752cdda6863b8f6f53a3d"
   license "MIT"
   head "https://github.com/seanchatmangpt/clnrm.git", branch: "master"
 
