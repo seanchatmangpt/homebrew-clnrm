@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Offline formula audit for this tap (CI-less, no network, no Homebrew
+# install): ruby syntax, stable https url, sha256 shape, version/tag
+# consistency, class/file-name convention.
+#
+# Usage: script/audit [formula files or directories]
+#   defaults to ./Formula
+# Exits: 0 = all formulas pass, 1 = violations found, 2 = usage error.
+
+require "pathname"
+
+REPO = Pathname.new(__FILE__).expand_path.parent.parent
+require REPO.join("lib", "tap_audit.rb")
+
+paths = ARGV.empty? ? [REPO.join("Formula").to_s] : ARGV
+results = {}
+paths.each do |p|
+  if File.directory?(p)
+    results.merge!(TapAudit.audit_dir(p))
+  elsif File.file?(p)
+    results[File.expand_path(p)] = TapAudit.audit(p)
+  else
+    warn "audit: no such file or directory: #{p}"
+    exit 2
+  end
+end
+
+failed = false
+results.sort.each do |path, violations|
+  if violations.empty?
+    puts "OK #{File.basename(path)}"
+  else
+    failed = true
+    violations.each { |v| puts v }
+  end
+end
+
+exit(failed ? 1 : 0)
